@@ -14,10 +14,11 @@ def create_app(config_name):
 
     migrate = Migrate(app,db)
     
-    from app.model import kantung_parkir,data_persolan
+    from app.model import kantung_parkir,data_kartu
 
     from .controller import controller as ctrl_blueprint
-    app.register_blueprint(ctrl_blueprint)
+    app.register_blueprint(ctrl_blueprint,url_prefix='/api/v1')
+    app.app_context().push()
 
 
     return app
