@@ -1,5 +1,5 @@
 from flask import request
-from flask_restplus import Resource, Namespace, fields,inputs,reqparse
+from flask_restplus import Resource, Namespace, fields
 
 
 from ..service.data_kartu_service import save_data_kartu,get_all_data_kartu, get_data_kartu_bySerial, update_data_kartu
