@@ -17,11 +17,14 @@ class Mahasiswa(db.Model):
     __tablename__ = "mahasiswa"
 
     nim = db.Column(db.String(18), primary_key=True)
-    nama = db.Column(db.String(25), nullable=False)
-    prodi = db.Column(db.String(5), nullable=False)
+    nama = db.Column(db.String(25), nullable=True)
     jurusan = db.Column(db.String(4), nullable=False)
-    email = db.Column(db.String(25), nullable=False)
-    hp = db.Column(db.String(13),nullable=False)
+    prodi = db.Column(db.String(25), nullable=False)
+    angkatan = db.Column(db.Integer, nullable=True)
+    tanggal_lahir = db.Column(db.Date, nullable=True)
+    jenis_kelamin = db.Column(db.String(25), nullable=True)
+    email = db.Column(db.String(25), nullable=True)
+    hp = db.Column(db.String(13),nullable=True)
     kartu = db.relationship("Kartu", uselist=False, backref="mahasiswa")
 
     def __repr__(self):
