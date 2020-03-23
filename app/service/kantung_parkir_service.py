@@ -6,11 +6,9 @@ from app.model.kantung_parkir import KantungParkir
 def save_new_kantung_parkir(data):
     parkir = KantungParkir.query.filter_by(nama=data['nama']).first()
     if not parkir:
-        new_kode = "KP-{}".format(str(uuid4())[:4].upper())
         new_parkir = KantungParkir(
-            kode = new_kode,
             nama = data['nama'],
-            alamat = data['alamat'],
+            keterangan = data['keterangan'],
             kapasitas = data['kapasitas']
         )
         save_to_database(new_parkir)
@@ -31,8 +29,8 @@ def get_all_kantung_parkir():
     return KantungParkir.query.all()
 
 
-def get_kantung_parkir_byID(kode):
-    return KantungParkir.query.filter_by(kode=kode).first()
+def get_kantung_parkir_byID(id):
+    return KantungParkir.query.filter_by(id=int(id)).first()
 
 
 def save_to_database(data):
