@@ -10,6 +10,7 @@ data_mhs = api.model('datamahasiswa',{
     'prodi': fields.String(readonly=True),
     'angkatan': fields.Integer(readonly=True),
     'tanggal_lahir':fields.Date(readonly=True),
+    'jenis_kelamin':fields.String(readonly=True),
     'jurusan': fields.String(readonly=True),
     'email': fields.String(readonly=True),
     'hp': fields.String(readonly=True),
