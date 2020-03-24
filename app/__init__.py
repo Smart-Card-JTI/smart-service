@@ -2,7 +2,7 @@ from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
 from config import app_config
-import os
+import os, logging
 
 db = SQLAlchemy()
 
@@ -23,6 +23,10 @@ def create_app(config_name):
     migrate = Migrate(app,db)
     
     from app.model import kantung_parkir,data_kartu
+
+    gunicorn_logger = logging.getLogger('gunicorn.error')
+    app.logger.handler = gunicorn_logger.handlers
+    app.logger.setLevel(gunicorn_logger.level)
 
     from .controller import controller as ctrl_blueprint
     app.register_blueprint(ctrl_blueprint,url_prefix='/api/v1')
