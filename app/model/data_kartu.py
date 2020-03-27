@@ -25,7 +25,7 @@ class Mahasiswa(db.Model):
     jenis_kelamin = db.Column(db.String(25), nullable=True)
     email = db.Column(db.String(25), nullable=True)
     hp = db.Column(db.String(13),nullable=True)
-    kartu = db.relationship("Kartu", uselist=False, backref="mahasiswa")
+    kartu = db.relationship("Kartu", uselist=False, backref="mahasiswa",lazy=True)
 
     def __repr__(self):
         return "<Mahasiswa : {}>".format(self.nim)
